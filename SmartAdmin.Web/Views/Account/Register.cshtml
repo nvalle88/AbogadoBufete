@@ -46,7 +46,30 @@
                     <section>
                         <label class="input">
                             <i class="icon-append fa fa-user"></i>
-                            <input type="email" asp-for="Email"  placeholder="Username">
+                            <input asp-for="Identificacion" placeholder="Identificaci&oacute;n">
+                            <b class="tooltip tooltip-bottom-right">Needed to enter the website (valid email address)</b>
+                        </label>
+                    </section>
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input asp-for="Nombre" placeholder="Nombres">
+                                <b class="tooltip tooltip-bottom-right">Needed to enter the website (valid email address)</b>
+                            </label>
+                        </section>
+                        <section class="col col-6">
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input asp-for="Apellido" placeholder="Apellidos">
+                                <b class="tooltip tooltip-bottom-right">Needed to enter the website (valid email address)</b>
+                            </label>
+                        </section>
+                    </div>
+                    <section>
+                        <label class="input">
+                            <i class="icon-append fa fa-user"></i>
+                            <input type="email" asp-for="Email" placeholder="Username">
                             <b class="tooltip tooltip-bottom-right">Needed to enter the website (valid email address)</b>
                         </label>
                     </section>
@@ -371,21 +394,5 @@
 <!-- /.modal -->
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-    <script type="text/javascript">
-        runAllForms();
-
-        // Model i agree button
-        $("#i-agree").click(function () {
-            var $this = $("#terms");
-            if ($this.checked) {
-                $('#myModal').modal('toggle');
-            } else {
-                $this.prop('checked', true);
-                $('#myModal').modal('toggle');
-            }
-        });
-
-        // Validation
-
-    </script>
+   
 }

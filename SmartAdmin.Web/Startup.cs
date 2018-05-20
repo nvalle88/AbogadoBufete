@@ -11,6 +11,9 @@ using SmartAdmin.Web.Configuration;
 using SmartAdmin.Web.Data;
 using SmartAdmin.Web.Models;
 using SmartAdmin.Web.Services;
+using SmartAdmin.Web.Utils;
+using System;
+using System.Threading.Tasks;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable once ClassNeverInstantiated.Global
@@ -62,6 +65,41 @@ namespace SmartAdmin.Web
             // Add the default identity classes and schema for use with EntityFramework
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
+            var TiempoVidaCookie = Convert.ToDouble(_configuration.GetSection("TiempoVidaCookie").Value);
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequiredUniqueChars = 4;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(TiempoVidaCookie);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(TiempoVidaCookie);
+                // If the LoginPath isn't set, ASP.NET Core defaults 
+                // the path to /Account/Login.
+                options.LoginPath = "/Account/Login";
+                // If the AccessDeniedPath isn't set, ASP.NET Core defaults 
+                // the path to /Account/AccessDenied.
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+
             // Enable the Context pool to manage the connections in an optimized manner
             services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(settings.ConnectionString));
 
@@ -70,6 +108,9 @@ namespace SmartAdmin.Web
 
             // Cache 200 (OK) server responses; any other responses, including error pages, are ignored.
             services.AddResponseCaching();
+
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -110,5 +151,10 @@ namespace SmartAdmin.Web
             // Enable the reponse caching middleware to serve 200 OK responses directly from cache on sub-sequent requests
             app.UseResponseCaching();
         }
+
+
+        
+
+
     }
 }

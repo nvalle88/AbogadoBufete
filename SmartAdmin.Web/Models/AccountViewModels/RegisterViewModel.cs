@@ -1,4 +1,4 @@
-﻿#region Using
+#region Using
 
 using System.ComponentModel.DataAnnotations;
 
@@ -8,6 +8,18 @@ namespace SmartAdmin.Web.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Identificación")]
+        public string Identificacion { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre")]
+        public string Nombre { get; set; }
+
+        [Required]
+        [Display(Name = "Apellido")]
+        public string Apellido { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

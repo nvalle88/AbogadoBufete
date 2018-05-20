@@ -11,9 +11,10 @@ using System;
 namespace SmartAdmin.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180519223507_creando_los_campor_al_usuario_Nombre_y_Apellido")]
+    partial class creando_los_campor_al_usuario_Nombre_y_Apellido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
