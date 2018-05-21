@@ -65,6 +65,11 @@ namespace SmartAdmin.Web
             // Add the default identity classes and schema for use with EntityFramework
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
+            var a = _configuration.GetSection("ConnectionString").Value;
+            //
+            services.AddDbContext<BufeteDbContext>(options =>
+              options.UseSqlServer(settings.ConnectionString));
+
             var TiempoVidaCookie = Convert.ToDouble(_configuration.GetSection("TiempoVidaCookie").Value);
 
             services.Configure<IdentityOptions>(options =>

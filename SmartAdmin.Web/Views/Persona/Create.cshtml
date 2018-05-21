@@ -1,0 +1,42 @@
+@model SmartAdmin.Web.Models.Bufete.Persona
+
+<section id="widget-grid" class="">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+                <header></header>
+                <div>
+                    <div class="jarviswidget-editbox">
+                        <input class="form-control" type="text">
+                    </div>
+                    <div class="widget-body">
+                        <form asp-action="Create" method="post">
+                            @{await Html.RenderPartialAsync("_PartialPersona", Model);}
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" id="btn-guardar" type="submit">
+                                            <i class="fa fa-save"></i>
+                                            &nbsp; Guardar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+}

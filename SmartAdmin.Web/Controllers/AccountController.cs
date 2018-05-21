@@ -12,6 +12,7 @@ using SmartAdmin.Web.Extensions;
 using SmartAdmin.Web.Models;
 using SmartAdmin.Web.Models.AccountViewModels;
 using SmartAdmin.Web.Services;
+using SmartAdmin.Web.Utils;
 
 #endregion
 
@@ -228,6 +229,7 @@ namespace SmartAdmin.Web.Controllers
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
+            await _userManager.AddToRoleAsync(user, Role.Cliente);
 
             if (result.Succeeded)
             {

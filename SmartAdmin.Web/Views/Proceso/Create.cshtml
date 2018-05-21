@@ -1,0 +1,30 @@
+@model SmartAdmin.Web.Models.Bufete.Proceso
+@{
+    ViewData["Title"] = "View";
+}
+@using SmartAdmin.Web.Utils
+<h2>View</h2>
+@if (User.IsInRole(Role.Cliente))
+{
+    <form id="movieForm" asp-action="Create" method="post">
+        <div class="col-sm-12 col-md-4">
+            <label class="control-label">Director</label>
+            <input type="text" asp-for="IdProceso" class="form-control" name="director" />
+        </div>
+        <button type="submit">Cliente</button>
+    </form>
+}
+
+
+@if (User.IsInRole(Role.Abogado))
+{
+    <form id="movieForm" asp-action="Create" method="post">
+        <div class="col-sm-12 col-md-4">
+            <label class="control-label">Director</label>
+            <input type="text" asp-for="IdProceso" class="form-control" name="director" />
+        </div>
+        <button type="submit">Abogado</button>
+    </form>
+}
+
+

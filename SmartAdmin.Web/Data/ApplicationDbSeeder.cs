@@ -90,18 +90,6 @@ namespace SmartAdmin.Web.Data
                var a= ex.Message;
                 throw;
             }
-           
-
-            //user = _userManager.FindByName("consulta@simed.com");
-            //if (user == null)
-            //{
-            //    user = new ApplicationUser
-            //    {
-            //        UserName = "consulta@simed.com",
-            //        Email = "consulta@simed.com",
-            //    };
-            //    _userManager.Create(user, "Consulta123**");
-            //}
         }
 
         private async Task CreateUserRoles()

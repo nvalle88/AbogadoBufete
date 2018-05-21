@@ -46,6 +46,8 @@
         <!-- END MAIN CONTENT -->
     </div>
     <!-- END MAIN PANEL -->
+    <span class="hide" id="span_mensaje">@TempData["Mensaje"]</span>
+    <span class="hide" id="span_mensaje_timer">@TempData["MensajeTimer"]</span>
     @{ await Html.RenderPartialAsync("_Footer"); }
     @{ await Html.RenderPartialAsync("_Shortcuts"); }
     @{ await Html.RenderPartialAsync("_Scripts"); }

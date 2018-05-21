@@ -72,6 +72,16 @@
     <!-- Vector Maps Plugin: Vectormap engine, Vectormap language -->
     <script src="~/js/plugin/vectormap/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="~/js/plugin/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/js/site.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        pageSetUp();
+        drawBreadCrumb();
+        Gestionar_Msg();
+        initLoadingForm();
+   });
+    </script>
 </environment>
 <environment exclude="Development">
     <!-- NOTE: Enable the bundle for faster loading and optimized caching! -->

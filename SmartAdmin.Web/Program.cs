@@ -2,6 +2,7 @@
 
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 #endregion
 
@@ -11,6 +12,15 @@ namespace SmartAdmin.Web
     {
         internal static void Main(string[] args) => BuildWebHost(args).Run();
 
-        private static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().Build();
+        public static IWebHost BuildWebHost(string[] args) =>
+WebHost.CreateDefaultBuilder(args)
+.UseStartup<Startup>()
+.ConfigureAppConfiguration((hostContext, config) =>
+{
+            // delete all default configuration providers
+            config.Sources.Clear();
+    config.AddJsonFile("appsettings.json", optional: true);
+})
+.Build();
     }
 }
