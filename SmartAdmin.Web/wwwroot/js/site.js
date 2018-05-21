@@ -1,4 +1,4 @@
-﻿
+
 
 function Init_Touchspin() {
     $('.touchspin_tasa').TouchSpin({
@@ -116,6 +116,33 @@ function initLoadingForm() {
         if (!$(event.target).hasClass("noFormLoading")) {
             $("#btn-guardar").prop("disabled", "disabled");
             $("#btn-guardar").html("<i class='fa fa-spinner fa-spin'></i> " + $("#btn-guardar").html());
+        }
+    });
+}
+
+function initCancelForm() {
+    $("#btn-cancelar").on("click", function (event) {
+        if (!$(event.target).hasClass("noFormLoading")) {
+            $("#btn-cancelar").prop("disabled", "disabled");
+            $("#btn-cancelar").html("<i class='fa fa-spinner fa-spin'></i> " + $("#btn-cancelar").html());
+        }
+    });
+}
+
+function initNuevoForm() {
+    $("#btn-nuevo").on("click", function (event) {
+        if (!$(event.target).hasClass("noFormLoading")) {
+            $("#btn-nuevo").prop("disabled", "disabled");
+            $("#btn-nuevo").html("<i class='fa fa-spinner fa-spin'></i> " + $("#btn-nuevo").html());
+        }
+    });
+}
+
+function initAtrasForm() {
+    $("#btn-atras").on("click", function (event) {
+        if (!$(event.target).hasClass("noFormLoading")) {
+            $("#btn-atras").prop("disabled", "disabled");
+            $("#btn-atras").html("<i class='fa fa-spinner fa-spin'></i> " + $("#btn-atras").html());
         }
     });
 }

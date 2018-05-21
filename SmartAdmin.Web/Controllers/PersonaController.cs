@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SmartAdmin.Web.Data;
 using SmartAdmin.Web.Extensions;
 using SmartAdmin.Web.Models.Bufete;
@@ -19,9 +20,10 @@ namespace SmartAdmin.Web.Controllers
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var ListaPersona = await _db.Persona.OrderBy(x=>x.Apellido).ThenBy(x=>x.Nombre).ToListAsync();
+            return View(ListaPersona);
         }
 
         public IActionResult Create()

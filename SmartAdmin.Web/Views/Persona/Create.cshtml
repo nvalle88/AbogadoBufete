@@ -1,6 +1,8 @@
 @model SmartAdmin.Web.Models.Bufete.Persona
 
 <section id="widget-grid" class="">
+    <a asp-action="Index" id="btn-atras" class="btn btn-primary"><i class="fa fa-arrow-left"></i> </a>
+    <p></p>
     <div class="row">
         <div class="col-sm-10">
             <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -15,11 +17,18 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <a class="btn btn-default" asp-action="Index" id="btn-cancelar">
+                                            <i class="fa fa-reply"></i>
+                                            &nbsp; Cancelar
+                                        </a>
                                         <button class="btn btn-primary" id="btn-guardar" type="submit">
                                             <i class="fa fa-save"></i>
                                             &nbsp; Guardar
                                         </button>
+
+
                                     </div>
+
                                 </div>
                             </div>
 
@@ -38,5 +47,4 @@
 
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
-
 }
